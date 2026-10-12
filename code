@@ -1,0 +1,132 @@
+
+# Mini Project Pertemuan 2
+# Nama: Yoga Putra Pradana
+# NIM: 2610190
+# Prodi: Ilmu Komputer
+
+data_mahasiswa = [
+    {
+        "nim": "230030536",
+        "nama": "anjani",
+        "universitas": "stikom bali",
+        "prodi": "sistem informasi"
+    },
+    {
+        "nim": "2610190",
+        "nama": "yoga",
+        "universitas": "djuanda",
+        "prodi": "ilmu komputer"
+    },
+    {
+        "nim": "2610032",
+        "nama": "kokoh",
+        "universitas": "djuanda",
+        "prodi": "ilmu komputer",
+    },
+]
+
+
+# Function untuk menampilkan data mahasiswa
+def tampilkan_data():
+    print("\n>> DATA MAHASISWA <<")
+
+    if len(data_mahasiswa) == 0:
+        print("Belum ada data mahasiswa.")
+    else:
+        for i, mahasiswa in enumerate(data_mahasiswa, start=1):
+            print(f"\nData ke-{i}")
+            print("NIM         :", mahasiswa["nim"])
+            print("Nama        :", mahasiswa["nama"])
+            print("Universitas :", mahasiswa["universitas"])
+            print("Prodi       :", mahasiswa["prodi"])
+
+
+# Function untuk menambahkan mahasiswa
+def tambah_data():
+    print("\n== TAMBAH DATA MAHASISWA ==")
+
+    nim = input("Masukkan NIM          : ")
+    nama = input("Masukkan Nama         : ")
+    universitas = input("Masukkan Universitas  : ")
+    prodi = input("Masukkan Prodi        : ")
+
+    mahasiswa_baru = {
+        "nim": nim,
+        "nama": nama,
+        "universitas": universitas,
+        "prodi": prodi
+    }
+
+    data_mahasiswa.append(mahasiswa_baru)
+
+    print("Data mahasiswa berhasil ditambahkan!")
+
+
+# Function untuk mengubah data mahasiswa
+def ubah_data():
+    print("\n>> UBAH DATA MAHASISWA <<")
+
+    nim_cari = input("Masukkan NIM yang ingin diubah: ")
+
+    for mahasiswa in data_mahasiswa:
+        if mahasiswa["nim"] == nim_cari:
+            print("Data ditemukan.")
+
+            mahasiswa["nama"] = input("Masukkan Nama baru        : ")
+            mahasiswa["universitas"] = input("Masukkan Universitas baru : ")
+            mahasiswa["prodi"] = input("Masukkan Prodi baru       : ")
+
+            print("Berhasil mengubah data mahasiswa!")
+            return
+
+    print("Data mahasiswa tidak ditemukan.")
+
+
+# Function untuk menghapus data mahasiswa
+def hapus_data():
+    print("\n>> HAPUS DATA MAHASISWA <<")
+
+    nim_cari = input("Masukkan NIM yang ingin dihapus: ")
+
+    for mahasiswa in data_mahasiswa:
+        if mahasiswa["nim"] == nim_cari:
+            data_mahasiswa.remove(mahasiswa)
+            print("Data mahasiswa berhasil dihapus!")
+            return
+
+    print("Data mahasiswa tidak ditemukan.")
+
+
+# Program utama
+# Program utama
+while True:
+    print("\n------------------------------")
+    print("       DATA MAHASISWA")
+    print("------------------------------")
+    print("1. Tampilkan Data")
+    print("2. Tambah Data")
+    print("3. Ubah Data")
+    print("4. Hapus Data")
+    print("5. Keluar")
+    print("------------------------------")
+
+    pilihan = input("Pilih menu (1-5): ")
+
+    if pilihan == "1":
+        tampilkan_data()
+
+    elif pilihan == "2":
+        tambah_data()
+
+    elif pilihan == "3":
+        ubah_data()
+
+    elif pilihan == "4":
+        hapus_data()
+
+    elif pilihan == "5":
+        print("Selesai bossKu, thanks!")
+        break
+
+    else:
+        print("Pilihan tidak tersedia! Pilih menu 1-5.")
